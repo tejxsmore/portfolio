@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image, Picture } from "@astrojs/image/components";
+---
+
+<Layout>
+  <div
+    id="about"
+    class="flex bg-gradient-to-r from-purple-400 to-sky-200 justify-center items-center"
+  >
+    <div class="h-screen max-w-7xl p-16">
+      <h1 class="text-5xl font-bold m-6">01. About</h1>
+      <div class="flex">
+        <div class="basis-3/5 m-6">
+          <p class="my-2 text-lg font-medium">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus
+            architecto provident obcaecati corporis eaque odio, vel quae
+            laboriosam similique accusamus, commodi numquam quas. Eveniet hic,
+            officiis voluptates veniam qui dignissimos saepe praesentium aliquam
+            ducimus asperiores.
+          </p>
+          <p class="my-2 text-lg font-medium">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero
+            deserunt quae nobis! Quis, ab nobis esse voluptatem repellat
+            perspiciatis laborum!
+          </p>
+          <p class="my-2 text-lg font-medium">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
+            explicabo, voluptatibus debitis, architecto quibusdam est amet harum
+            quas eius iste quasi placeat fugit voluptas exercitationem. Nobis ut
+            harum at veritatis.
+          </p>
+        </div>
+        <div class="basis-2/5 m-6 flex justify-center items-center">
+          <img
+            class="rounded-xl w-96 h-96"
+            src="/images/tejasmore.jpg"
+            alt="Profile image"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
