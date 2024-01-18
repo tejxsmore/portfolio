@@ -1,5 +1,6 @@
 import profile from "/img/profile.jpg";
 import { GoHomeFill } from "react-icons/go";
+import { IoMdMail } from "react-icons/io";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useMediaQuery } from "../util/useMediaQuery";
@@ -29,9 +30,12 @@ export default function Navbar() {
         />
       </svg> */}
 
-      <div class="text-3xl">
+      <div class="text-3xl flex gap-x-8">
         <a href="/">
           <GoHomeFill />
+        </a>
+        <a href="mailto:tejasmore1104@gmail.com">
+          <IoMdMail />
         </a>
       </div>
 

@@ -1,4 +1,55 @@
 ---
+import { project } from "../../public/projects";
+import { FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 ---
 
-<div id="projects" class="flex"></div>
+<div
+  id="projects"
+  class="md:p-16 p-8 bg-dark text-light border-b-2 border-light border-dashed"
+>
+  <h2 class="text-center text-4xl font-semibold md:pb-16 pb-8">Projects</h2>
+  <div class="flex justify-center items-center">
+    <div class="md:w-2/3 md:flex md:flex-wrap justify-evenly">
+      {
+        project.map((item) => (
+          <div class="py-5">
+            <a href={item.link} target="_blank">
+              <img
+                id="img"
+                src={item.img}
+                alt={item.title}
+                class="p-1 mb-2 border-2 border-light border-dashed rounded-md"
+              />
+            </a>
+            <div class="p-2 rounded-md bg-purple text-light border-2 border-light border-dashed">
+              <h3 class="text-2xl font-bold pb-2 flex items-center">
+                {item.title}
+                <a href={item.git} target="_blank" class="px-4 text-lg">
+                  <FaGithub />
+                </a>
+                <a href={item.link} target="_blank" class="text-sm">
+                  <FaExternalLinkAlt />
+                </a>
+              </h3>
+              <h4 class="pb-4 w-[320px]">{item.description}</h4>
+              <h5 class="flex flex-row ">
+                {item.tech.map((tech) => (
+                  <p class="bg-dark text-light px-4 py-1 rounded-full mr-2 mb-2">
+                    {tech}
+                  </p>
+                ))}
+              </h5>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  #img {
+    width: 350px;
+  }
+</style>

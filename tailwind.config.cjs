@@ -10,6 +10,7 @@ module.exports = {
         // white: "#FFFAF4",
         dark: "#332941",
         light: "#FFF8E3",
+        purple: "#864AF9",
       },
     },
   },
