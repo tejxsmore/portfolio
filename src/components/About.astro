@@ -1,0 +1,48 @@
+---
+import { CiLocationOn } from "react-icons/ci";
+---
+
+<div
+  id="about"
+  class="bg-dark text-light flex md:flex-row flex-col-reverse pt-4 pb-8 px-8 justify-evenly items-center"
+>
+  <div class="">
+    <p class="py-6">Hello, I am</p>
+    <h4 class="pb-10 text-6xl font-bold">Tejas More</h4>
+    <div class="pb-12 md:pb-0 max-w-2xl md:text-justify text-left">
+      I am a Software Engineer based in Mumbai, India. I love to build things
+      from the scratch using new technologies. I am proficient in Java,
+      Javascript and Golang. I have good knowledge of DSA (solved 500+ problem
+      on LeetCode) and competitive programming (3* CodeChef). I keep my skills
+      sharp and up to date by staying updated with industry trends and working
+      on personal projects
+    </div>
+  </div>
+
+  <div id="blob" class="border-2 border-light border-dashed"></div>
+</div>
+
+<style>
+  #blob {
+    background-image: url(https://avatars.githubusercontent.com/u/87657235?v=4);
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    -webkit-background-position: center;
+    background-position: center center;
+    margin: 20px;
+    box-shadow: 0 5px 50px 5px rgba(245, 110, 253, 0.2);
+    animation: animate 5s ease-in-out infinite;
+    transition: all 1s ease-in-out;
+  }
+
+  @keyframes animate {
+    0%,
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+  }
+</style>
