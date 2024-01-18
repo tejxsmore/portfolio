@@ -34,7 +34,7 @@ export default function Navbar() {
         <a href="/">
           <GoHomeFill />
         </a>
-        <a href="mailto:tejasmore1104@gmail.com">
+        <a href="mailto:heyytejas@gmail.com">
           <IoMdMail />
         </a>
       </div>

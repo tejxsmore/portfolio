@@ -39,4 +39,24 @@ export const project = [
     link: "https://rapidnews.vercel.app",
     git: "https://github.com/tejxsmore/rapidnews",
   },
+  {
+    id: 4,
+    title: "Sneako",
+    img: "/img/sneako.png",
+    description:
+      "This is an E-commerce website for Sneaker lovers. Visitors can view my trending sneakers from companies like Nike, Puma and Adidas of different types.",
+    tech: ["Astro", "Tailwind", "MongoDB"],
+    link: "https://sneako.vercel.app",
+    git: "https://github.com/tejxsmore/sneako",
+  },
+  {
+    id: 5,
+    title: "Notes",
+    img: "/img/notes.png",
+    description:
+      "Notes app is note taking application similar to google Keep. We can store our passwords, lists or important information in here for future use.",
+    tech: ["Javascript", "React"],
+    link: "https://writenotes.vercel.app",
+    git: "https://github.com/tejxsmore/writenotes",
+  },
 ];
