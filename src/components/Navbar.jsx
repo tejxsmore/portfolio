@@ -42,11 +42,11 @@ export default function Navbar() {
       {matches && (
         <div className="flex gap-12 items-center text-light">
           <a href="#about">About</a>
-          <a href="#experience">Experience</a>
+          {/* <a href="#experience">Experience</a> */}
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
           <a href="/Tejasmore-resume.pdf" download="Tejasmore-resume">
-            <button class="px-5 py-1.5 border-2 border-light border-dashed bg-dark  text-light  rounded-sm hover:bg-light hover:text-dark">
+            <button class="px-5 py-1.5 border-2 border-light border-dashed bg-dark  text-light  hover:bg-light hover:text-dark">
               Resume
             </button>
           </a>
@@ -90,12 +90,12 @@ export default function Navbar() {
             >
               About
             </a>
-            <a
+            {/* <a
               onClick={() => setToggled((prevToggle) => !prevToggle)}
               href="#experience"
             >
               Experience
-            </a>
+            </a> */}
             <a
               onClick={() => setToggled((prevToggle) => !prevToggle)}
               href="#projects"
@@ -113,7 +113,7 @@ export default function Navbar() {
               href="/tejasmoreResume.pdf"
               download="tejasmoreResume"
             >
-              <button class="px-5 py-1.5 border-2 border-light border-dashed bg-dark text-light font-semibold rounded-sm hover:bg-light hover:text-dark">
+              <button class="px-5 py-1.5 border-2 border-light border-dashed bg-dark text-light font-semibold hover:bg-light hover:text-dark">
                 Resume
               </button>
             </a>
