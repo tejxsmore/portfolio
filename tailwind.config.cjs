@@ -9,6 +9,7 @@ module.exports = {
         orange: "#fd6532",
         pink: "#FF4B91",
         // bg-gradient-to-r from-[#fd6532] to-[#FF4B91]
+        // bg-[#100F0F] hover:bg-[#191919]
       },
     },
   },

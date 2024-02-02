@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className="bg-dark text-light relative px-8 py-8 flex justify-between items-center py-4 "
+      className="bg-dark text-light relative px-8 py-8 flex justify-between items-center"
     >
       {/* <svg
         className="absolute bottom-0 left-1/2 -translate-x-1/2 "
@@ -30,7 +30,7 @@ export default function Navbar() {
         />
       </svg> */}
 
-      <div class="text-3xl flex gap-x-8">
+      <div className="text-3xl flex gap-x-8">
         <a href="/">
           <GoHomeFill />
         </a>
@@ -46,7 +46,7 @@ export default function Navbar() {
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
           <a href="/Tejasmore-resume.pdf" download="Tejasmore-resume">
-            <button class="px-5 py-1.5 border-2 border-light border-dashed bg-dark  text-light  hover:bg-light hover:text-dark">
+            <button className="px-5 py-1.5 border-2 border-light border-dashed bg-dark  text-light  hover:bg-light hover:text-dark">
               Resume
             </button>
           </a>
@@ -113,7 +113,7 @@ export default function Navbar() {
               href="/tejasmoreResume.pdf"
               download="tejasmoreResume"
             >
-              <button class="px-5 py-1.5 border-2 border-light border-dashed bg-dark text-light font-semibold hover:bg-light hover:text-dark">
+              <button className="px-5 py-1.5 border-2 border-light border-dashed bg-dark text-light font-semibold hover:bg-light hover:text-dark">
                 Resume
               </button>
             </a>
