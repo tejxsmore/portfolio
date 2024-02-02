@@ -4,13 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // brown: "#3F2305",
-        // green: "#004225",
-        // skin: "#F2ECBE",
-        // white: "#FFFAF4",
-        dark: "#332941",
-        light: "#FFF8E3",
-        purple: "#7743DB",
+        dark: "#161616",
+        light: "#FEFCF3",
+        orange: "#fd6532",
+        pink: "#FF4B91",
+        // bg-gradient-to-r from-[#fd6532] to-[#FF4B91]
       },
     },
   },

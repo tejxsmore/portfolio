@@ -5,22 +5,19 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 ---
 
 <div id="projects" class="md:p-16 md:px-10 p-8 bg-dark text-light">
-  <h2 class="text-5xl font-bold text-center pb-16">Projects</h2>
+  <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-center pb-16">
+    Projects
+  </h2>
   <div class="flex justify-center items-center">
-    <div class="md:w-4/5 md:flex md:flex-wrap justify-evenly">
+    <div class="md:w-[1250px] md:flex md:flex-wrap justify-evenly">
       {
         project.map((item) => (
-          <div class="py-6 px-2">
-            <div class="p-2 rounded-md bg-purple text-light border-2 border-light border-dashed">
+          <div class="py-8">
+            <div class="p-4 text-light border-2 border-light border-dashed">
               <a href={item.link} target="_blank">
-                <img
-                  id="img"
-                  src={item.img}
-                  alt={item.title}
-                  class="rounded-md mb-2"
-                />
+                <img id="img" src={item.img} alt={item.title} class="mb-4" />
               </a>
-              <h3 class="text-2xl font-bold pb-2 flex items-center">
+              <h3 class="text-2xl font-bold pb-4 flex items-center">
                 {item.title}
                 <a href={item.git} target="_blank" class="mx-4 text-lg">
                   <FaGithub />
@@ -29,10 +26,10 @@ import { FaExternalLinkAlt } from "react-icons/fa";
                   <FaExternalLinkAlt />
                 </a>
               </h3>
-              <h4 class="pb-4 w-[320px]">{item.description}</h4>
+              <h4 class="pb-4 w-[325px]">{item.description}</h4>
               <h5 class="flex flex-row ">
                 {item.tech.map((tech) => (
-                  <p class="bg-dark text-light px-4 py-1 rounded-full mr-2 mb-2">
+                  <p class="bg-gradient-to-br from-orange to-pink text-light px-4 py-1 rounded-full mr-4 mb-2">
                     {tech}
                   </p>
                 ))}
