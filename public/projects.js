@@ -5,7 +5,7 @@ export const project = [
     img: "/img/cart.png",
     description:
       "This is a full-stack decentralized application (DApp) NFT marketplace built as a study project to learn more about blockchain and smart contract development.",
-    tech: ["Solidity", "Typescript", "Ethereum"],
+    tech: ["Solidity", "Typescript"],
     link: "https://digitalcart.vercel.app",
     git: "https://github.com/tejxsmore/digitalcart",
   },
@@ -25,7 +25,7 @@ export const project = [
     img: "/img/blog.png",
     description:
       "Blogifyi is a personal blogging website built using Astro. User can read blogs of different categories. The webiste consists of blog, profile and about me section",
-    tech: ["Astro", "Tailwind", "MongoDB"],
+    tech: ["Astro", "Tailwind"],
     link: "https://blogifyi.vercel.app",
     git: "https://github.com/tejxsmore/blogifyi",
   },
@@ -35,7 +35,7 @@ export const project = [
     img: "/img/news.png",
     description:
       "A news app that provides users with up-to-date news from various sources. Users can customize their news feed based on their topics, interests and preferences.",
-    tech: ["Next", "Tailwind", "RestAPI"],
+    tech: ["Next", "Tailwind"],
     link: "https://rapidnews.vercel.app",
     git: "https://github.com/tejxsmore/rapidnews",
   },
@@ -45,7 +45,7 @@ export const project = [
     img: "/img/sneako.png",
     description:
       "This is an E-commerce website for Sneaker lovers. Visitors can view my trending sneakers from companies like Nike, Puma and Adidas of different types.",
-    tech: ["Astro", "Tailwind", "MongoDB"],
+    tech: ["Astro", "Tailwind"],
     link: "https://sneako.vercel.app",
     git: "https://github.com/tejxsmore/sneako",
   },
