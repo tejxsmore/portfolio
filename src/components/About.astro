@@ -1,51 +1,36 @@
----
----
-
-<div
-  id="about"
-  class="bg-dark text-light flex md:flex-row flex-col-reverse md:p-32 md:pb-60 p-8 justify-evenly items-center"
->
-  <div class="">
-    <p class="py-8">Hello, I am</p>
-    <h4
-      class="pb-10 text-5xl sm:text-6xl md:text-7xl font-bold text-transparent bg-gradient-to-r from-orange to-pink whitespace-nowrap bg-clip-text"
-    >
-      Tejas More
-    </h4>
-    <div class="pb-10 md:pb-0 max-w-xl md:text-justify">
-      I am a Software Engineer based in Mumbai, India. I love to build things
-      from the scratch using new technologies. I am proficient in Java,
-      Javascript and Golang. I have good knowledge of DSA (solved 500+ problem
-      on LeetCode) and competitive programming (3* CodeChef). I keep my skills
-      sharp and up to date by staying updated with industry trends and working
-      on personal projects
+<div id="about" class="md:p-16 py-12 md:px-10 p-8 bg-dark text-slate-200">
+  <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-center pb-16">
+    About me
+  </h2>
+  <div class="flex justify-center items-center">
+    <div class="text-slate-200 w-full sm:max-w-md md:max-w-lg pb-16">
+      <p class="pb-10">
+        I am a Software Engineer based in Mumbai. I love to build things from
+        the scratch using new technologies. I am proficient in Java, Javascript
+        and Golang. I have good knowledge of DSA and competitive programming. I
+        keep my skills sharp and up to date by staying updated with industry
+        trends and working on personal projects
+      </p>
+      <p class="pb-10">
+        I completed my Bachelors in Computer Science in 2024 from Terna
+        Engineering college, Nerul. I have massive interest in blockchain and
+        AI.
+      </p>
+      <p class="pb-5">Technologies that I use</p>
+      <div class="flex pb-10">
+        <ul class="mr-10">
+          <li class="hover:text-orange">» React</li>
+          <li class="hover:text-pink">» Next</li>
+          <li class="hover:text-orange">» Astro</li>
+          <li class="hover:text-pink">» Tailwind</li>
+        </ul>
+        <ul>
+          <li class="hover:text-pink">» Golang</li>
+          <li class="hover:text-orange">» Nodejs</li>
+          <li class="hover:text-orange">» Python</li>
+          <li class="hover:text-pink">» Solidity</li>
+        </ul>
+      </div>
     </div>
   </div>
-
-  <div id="blob" class="border-2 border-light border-dashed"></div>
 </div>
-
-<style>
-  #blob {
-    background-image: url(https://avatars.githubusercontent.com/u/87657235?v=4);
-    width: 300px;
-    height: 300px;
-    background-size: cover;
-    -webkit-background-position: center;
-    background-position: center center;
-    margin: 20px;
-    box-shadow: 0 5px 25px 0 rgba(250, 120, 64, 0.911);
-    animation: animate 5s ease-in-out infinite;
-    transition: all 1s ease-in-out;
-  }
-
-  @keyframes animate {
-    0%,
-    100% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
-    50% {
-      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    }
-  }
-</style>
