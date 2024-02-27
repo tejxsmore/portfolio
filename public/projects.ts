@@ -1,13 +1,13 @@
 export const project = [
   {
     id: 0,
-    title: "Digital Cart",
+    title: "Cryptoden",
     img: "/img/cart.png",
     description:
-      "This is a full-stack decentralized application (DApp) NFT marketplace built as a study project to learn more about blockchain and smart contract development.",
-    tech: ["Solidity", "Typescript"],
-    link: "https://digitalcart.vercel.app",
-    git: "https://github.com/tejxsmore/digitalcart",
+      "Cryptoden is a decentralised crypto trading platform, you can view real time accurate crypto prices and buy/sell NFTs from various domains.",
+    tech: ["Typescript", "Ethereum"],
+    link: "https://cryptoden.vercel.app",
+    git: "https://github.com/tejxsmore/cryptoden",
   },
   {
     id: 1,
