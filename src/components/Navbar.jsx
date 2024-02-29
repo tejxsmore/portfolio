@@ -14,30 +14,9 @@ export default function Navbar() {
       id="navbar"
       className="bg-dark text-light relative px-8 py-8 flex justify-between items-center"
     >
-      {/* <svg
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 "
-        width="150"
-        height={4}
-        fill="none"
-        viewBox="0 0 150 4"
-        xmlns="http:www.w3.org/2000/svg"
-      >
-        <path
-          d="M2 2L428 2"
-          strokeWidth={2}
-          stroke="#FFF8E3"
-          strokeLinecap="round"
-        />
-      </svg> */}
-
-      <div className="text-3xl flex gap-x-8">
-        <a href="/">
-          <GoHomeFill />
-        </a>
-        <a href="mailto:heyytejas@gmail.com">
-          <IoMdMail />
-        </a>
-      </div>
+      <a href="/">
+        <img src="/favicon.ico" alt="Logo" className="w-7 h-7" />
+      </a>
 
       {matches && (
         <div className="flex gap-12 items-center text-light">
