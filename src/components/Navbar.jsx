@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className="bg-dark text-light relative px-8 py-8 flex justify-between items-center"
+      className="sticky top-0 bg-dark text-light px-8 py-8 flex justify-between items-center"
     >
       <a href="/">
         <img src="/favicon.ico" alt="Logo" className="w-7 h-7" />
@@ -89,8 +89,8 @@ export default function Navbar() {
             </a>
             <a
               onClick={() => setToggled((prevToggle) => !prevToggle)}
-              href="/tejasmoreResume.pdf"
-              download="tejasmoreResume"
+              href="/Tejasmore-resume.pdf"
+              download="Tejasmore-resume"
             >
               <button className="px-5 py-1.5 border-2 border-light border-dashed bg-dark text-light font-semibold hover:bg-light hover:text-dark">
                 Resume
