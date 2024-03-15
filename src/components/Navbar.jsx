@@ -7,14 +7,14 @@ import { useMediaQuery } from "../util/useMediaQuery";
 
 export default function Navbar() {
   const [toggled, setToggled] = useState(false);
-  const matches = useMediaQuery("(min-width: 1280px)");
+  const matches = useMediaQuery("(min-width: 800px)");
 
   return (
     <nav
       id="navbar"
       className="sticky top-0 bg-dark text-light px-8 py-8 flex justify-between items-center"
     >
-      <a href="/">
+      <a href="/" className="z-50">
         <img src="/favicon.ico" alt="Logo" className="w-7 h-7" />
       </a>
 
@@ -38,20 +38,23 @@ export default function Navbar() {
           className="space-y-1.5 cursor-pointer z-50"
         >
           <motion.span
-            animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
+            animate={{
+              rotateZ: toggled ? 45 : 0,
+              y: toggled ? 8 : 0,
+            }}
             className="block h-0.5 w-8 bg-light"
           ></motion.span>
           <motion.span
-            animate={{ width: toggled ? 0 : 24 }}
-            className="block h-0.5 w-6 bg-light"
+            animate={{ width: toggled ? 0 : 32 }}
+            className="block h-0.5 w-8 bg-light"
           ></motion.span>
           <motion.span
             animate={{
               rotateZ: toggled ? -45 : 0,
               y: toggled ? -8 : 0,
-              width: toggled ? 32 : 16,
+              // width: toggled ? 32 : 16,
             }}
-            className="block h-0.5 w-4 bg-light"
+            className="block h-0.5 w-8 bg-light"
           ></motion.span>
         </div>
       )}
