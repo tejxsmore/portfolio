@@ -6,13 +6,14 @@ body {
 	padding: 0;
 	width: 100%;
 	min-height: 100%;
-	color: #f5eedd;
-	background-color: #06202b;
-	font-family: 'Excon', sans-serif;
-	letter-spacing: 0.5px;
+	color: #fffdf6;
 	box-sizing: border-box;
 	scrollbar-width: none; /* Firefox */
 	-ms-overflow-style: none; /* IE 10+ */
+	overflow-x: hidden;
+
+	position: relative;
+	z-index: 0; /* Important to stay under the overlay */
 }
 
 /* Hide scrollbars - WebKit */
@@ -26,9 +27,31 @@ body {
 	background: transparent;
 }
 
-/* Inherit box-sizing for all elements */
+/* Box-sizing inheritance */
 *,
 *::before,
 *::after {
 	box-sizing: inherit;
+}
+
+/* ✅ Background layer (gradient + grain) behind all content */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+
+	background: radial-gradient(ellipse at top center, #5409da 0%, #3a1078 100%);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	/* Grain overlay using SVG */
+	background-image:
+		radial-gradient(ellipse at top center, #5409da 0%, #3a1078 100%),
+		url("data:image/svg+xml;utf8,<svg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>");
+	background-blend-mode: normal, soft-light;
+	background-size: cover, 150px;
+	opacity: 1;
+	pointer-events: none;
 }
