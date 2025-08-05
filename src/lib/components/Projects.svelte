@@ -52,10 +52,10 @@
 </script>
 
 <h2 class="border-b-2 p-5 text-center text-2xl font-semibold">Projects</h2>
-<div class="grid w-full grid-rows-2 divide-y-2 lg:min-h-screen lg:grid-cols-2 lg:divide-y-0">
+<div class="grid w-full grid-rows-2 divide-y-2 lg:grid-cols-2 lg:divide-y-0">
 	{#each projects as project, i}
 		<div
-			class="space-y-10 p-10
+			class="space-y-5 p-5
 				{i === 0 ? 'border-b-2 lg:border-r-2' : ''}
 				{i === 1 ? 'border-b-2' : ''}
 				{i === 2 ? 'lg:border-r-2' : ''}"

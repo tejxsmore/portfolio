@@ -10,11 +10,6 @@
 		<p class="text-2xl font-semibold md:text-4xl">Software Engineer from Mumbai</p>
 	</div>
 
-	<div class="min-h-screen">
-		<Projects />
-	</div>
-
-	<div class="h-screen">
-		<Contact />
-	</div>
+	<Projects />
+	<Contact />
 </div>

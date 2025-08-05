@@ -1,3 +1,3 @@
 <script></script>
 
-<div></div>
+<div class="flex min-h-screen"></div>

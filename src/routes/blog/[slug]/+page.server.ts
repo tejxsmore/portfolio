@@ -4,7 +4,7 @@ import { env } from '$env/dynamic/private';
 interface Post {
 	title: string;
 	slug: string;
-	publishDate: string;
+	createdAt: string;
 	content: string;
 }
 
@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 					blogs(where: { slug: $slug }) {
 						title
 						slug
-						publishDate
+						createdAt
 						content
 					}
 				}

@@ -2,102 +2,122 @@
 	interface Props {
 		content: string;
 		className?: string;
+		onHeadingsExtracted?: (headings: { id: string; text: string; level: number }[]) => void;
 	}
 
-	let { content, className = '' }: Props = $props();
-	let parsedContent = $derived(parseMarkdown(content || ''));
+	let { content, className = '', onHeadingsExtracted }: Props = $props();
 
-	function parseMarkdown(markdown: string): string {
-		if (!markdown) return '';
+	let parsedContent = $state('');
+	let extractedHeadings = $state<{ id: string; text: string; level: number }[]>([]);
 
+	// Helper function to create a URL-friendly slug from text
+	function slugify(text: string): string {
+		return text
+			.toLowerCase()
+			.replace(/[^\w\s-]/g, '') // Remove non-word chars (except spaces and hyphens)
+			.replace(/[\s_-]+/g, '-') // Replace spaces/underscores with single hyphen
+			.replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+	}
+
+	function parseMarkdown(markdown: string): {
+		html: string;
+		headings: { id: string; text: string; level: number }[];
+	} {
+		if (!markdown) return { html: '', headings: [] };
+
+		const tempHeadings: { id: string; text: string; level: number }[] = [];
 		let html = markdown;
 
-		html = processCodeBlocks(html);
+		// --- Process Headings First to Extract and Add IDs ---
+		// This regex captures all heading levels and their text.
+		const headingRegex = /^(#+)\s*(.*)$/gm;
+		let match;
+		let lastIndex = 0;
+		let newHtmlParts: string[] = [];
 
+		// Iterate through matches to process headings
+		while ((match = headingRegex.exec(html)) !== null) {
+			const hashes = match[1];
+			const headingText = match[2];
+			const level = hashes.length;
+			const id = slugify(headingText);
+
+			tempHeadings.push({ id, text: headingText, level });
+
+			// Append content before this heading
+			newHtmlParts.push(html.substring(lastIndex, match.index));
+
+			// Generate the HTML for the heading with ID and user's custom classes
+			const sizeMap: Record<number, string> = {
+				1: 'text-2xl',
+				2: 'text-xl',
+				3: 'text-lg',
+				4: 'text-base',
+				5: 'text-sm',
+				6: 'text-xs'
+			};
+			newHtmlParts.push(
+				`<h${level} id="${id}" class="${sizeMap[level]} pt-5 pb-2.5 font-medium text-black">${headingText}</h${level}>`
+			);
+
+			lastIndex = headingRegex.lastIndex;
+		}
+		// Append any remaining content after the last heading
+		newHtmlParts.push(html.substring(lastIndex));
+		html = newHtmlParts.join('');
+
+		// --- Apply other transformations (order matters) ---
+
+		// Inline code
 		html = html.replace(
 			/`([^`]+)`/g,
-			'<code class="bg-[#191919] px-1.5 py-0.5 rounded font-mono text-sm text-white">$1</code>'
+			'<code class="bg-gray-300 px-1.5 py-0.5 rounded font-mono text-sm text-black">$1</code>'
 		);
-
-		html = html.replace(
-			/^###### (.*$)/gm,
-			'<h6 class="text-sm font-semibold text-black mt-6 mb-2">$1</h6>'
-		);
-		html = html.replace(
-			/^##### (.*$)/gm,
-			'<h5 class="text-base font-semibold text-black mt-6 mb-2">$1</h5>'
-		);
-		html = html.replace(
-			/^#### (.*$)/gm,
-			'<h4 class="text-lg font-semibold text-black mt-6 mb-2">$1</h4>'
-		);
-		html = html.replace(
-			/^### (.*$)/gm,
-			'<h3 class="text-xl font-semibold text-black mt-6 mb-3">$1</h3>'
-		);
-		html = html.replace(
-			/^## (.*$)/gm,
-			'<h2 class="text-2xl font-bold text-black mt-8 mb-4">$1</h2>'
-		);
-		html = html.replace(
-			/^# (.*$)/gm,
-			'<h1 class="text-3xl font-bold text-black mt-10 mb-6">$1</h1>'
-		);
-
-		html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-bold">$1</strong>');
-		html = html.replace(/__(.*?)__/g, '<strong class="text-black font-bold">$1</strong>');
-		html = html.replace(/\*(.*?)\*/g, '<em class="text-black italic">$1</em>');
-		html = html.replace(/_(.*?)_/g, '<em class="text-black italic">$1</em>');
-
+		// Bold and italic (limit to font-semibold, not full bold)
+		html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium text-black">$1</strong>');
+		html = html.replace(/__(.*?)__/g, '<strong class="font-semibold text-black">$1</strong>');
+		html = html.replace(/\*(.*?)\*/g, '<em class="text-black">$1</em>');
+		html = html.replace(/_(.*?)_/g, '<em class="text-black">$1</em>');
+		// Blockquote
 		html = html.replace(
 			/^> (.*$)/gm,
-			'<blockquote class="border-l-4 border-black pl-4 py-2.5 italic text-black my-4">$1</blockquote>'
+			'<blockquote class="border-l-3 border-black pl-3 py-1.5 italic bg-gray-200 my-3 text-black">$1</blockquote>'
 		);
-		html = html.replace(/^\-\-\-$/gm, '<hr class="border-t my-8 border-black">');
-
-		html = processLists(html);
-
+		// Horizontal rule
+		html = html.replace(/^\-\-\-$/gm, '<hr class="border-t my-5 mb-7.5 border-[#E6521F]">');
+		// Links
 		html = html.replace(
-			/\[([^\]]+)\]\(([^)]+)\)/g,
+			/\[([^\]]+)\]$$([^)]+)$$/g,
 			'<a href="$2" class="text-black hover:underline">$1</a>'
 		);
-
+		// Images
 		html = html.replace(
-			/!\[([^\]]+)\]\(([^)]+)\)/g,
-			'<img src="$2" alt="$1" class="max-w-full h-auto rounded-lg my-4">'
+			/!\[([^\]]+)\]$$([^)]+)$$/g,
+			'<img src="$2" alt="$1" class="max-w-full h-auto rounded-[10px] my-5">'
 		);
 
-		html = processTables(html);
+		// Process lists
+		html = processLists(html);
 
-		html = html.replace(/^(?!<[a-z\/].*>)(.+)$/gm, '<p class="my-4 text-black">$1</p>');
-		html = html.replace(/<p class="my-4"><\/p>/g, '');
-		html = html.replace(/<\/p>\s*<p/g, '</p>\n<p');
+		// Paragraphs
+		html = html.replace(/^(?!<[a-z\/].*>)(.+)$/gm, '<p class="my-5 text-black">$1</p>');
+		html = html.replace(/<p class="my-5 text-black"><\/p>/g, ''); // Remove empty paragraphs
+		html = html.replace(/<\/p>\s*<p/g, '</p>\n<p'); // Ensure paragraphs are on new lines
 
-		return html;
+		return { html, headings: tempHeadings };
 	}
 
-	function processCodeBlocks(html: string): string {
-		html = html.replace(/```([a-zA-Z0-9]*)\n([\s\S]*?)```/g, (_, language, code) => {
-			const languageClass = language ? ` language-${language}` : '';
-			const formattedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-			return `<pre class="bg-[#272829] px-4 pt-8 rounded-[16px] overflow-x-auto">
-<code class="block whitespace-pre text-white m-0 p-0 font-mono leading-0 ${languageClass}">${formattedCode}</code>
-</pre>`;
-		});
-
-		return html;
-	}
-
+	// This function processes lists based on the user's original implementation
 	function processLists(html: string): string {
+		// Detect bullet list items
 		html = html.replace(/^(\s*)([\-\*]) (.*$)/gm, (match, space, bullet, content) => {
 			const indent = space.length;
-			return `<li data-indent="${indent}" class="ml-${indent > 0 ? 4 : 0} mb-1 text-black">${content}</li>`;
+			return `<li data-indent="${indent}" class="mb-1 text-black">${content}</li>`;
 		});
-
+		// Detect numbered list items
 		html = html.replace(/^(\s*)(\d+\.) (.*$)/gm, (match, space, number, content) => {
 			const indent = space.length;
-			return `<li data-indent="${indent}" data-ordered="true" class="ml-${indent > 0 ? 4 : 0} mb-1 text-black">${content}</li>`;
+			return `<li data-indent="${indent}" data-ordered="true" class="mb-1 text-black">${content}</li>`;
 		});
 
 		const lines = html.split('\n');
@@ -110,105 +130,48 @@
 				const isOrdered = line.includes('data-ordered="true"');
 				const listType = isOrdered ? 'ol' : 'ul';
 				const listClass = isOrdered
-					? 'list-decimal pl-5 my-4 text-black'
-					: 'list-disc pl-5 my-4 text-black';
+					? 'list-decimal pl-5 marker:font-medium marker:text-black'
+					: 'list-disc pl-5 marker:font-medium marker:text-black';
 
 				while (listStack.length > indent) {
 					result.push(`</${listStack.pop()!}>`);
 				}
-
 				if (listStack.length <= indent) {
 					result.push(`<${listType} class="${listClass}">`);
 					listStack.push(listType);
 				}
-
 				const cleanedLine = line
 					.replace(/ data-indent="\d+"/, '')
 					.replace(/ data-ordered="true"/, '');
-
 				result.push(cleanedLine);
 			} else {
 				while (listStack.length > 0) {
 					result.push(`</${listStack.pop()!}>`);
 				}
-
 				result.push(line);
 			}
 		}
-
 		while (listStack.length > 0) {
 			result.push(`</${listStack.pop()!}>`);
 		}
-
 		return result.join('\n');
 	}
 
-	function processTables(html: string): string {
-		let inTable = false;
-		const lines = html.split('\n');
-		const result: string[] = [];
+	// Use an effect to re-parse markdown whenever the content changes
+	$effect(() => {
+		const result = parseMarkdown(content || '');
+		parsedContent = result.html;
+		extractedHeadings = result.headings;
+	});
 
-		for (let i = 0; i < lines.length; i++) {
-			const line = lines[i];
-			const isTableRow = line.trim().startsWith('|') && line.trim().endsWith('|');
-
-			if (isTableRow) {
-				if (!inTable) {
-					result.push(
-						'<div class="overflow-x-auto my-5"><table class="w-full border-collapse text-black">'
-					);
-
-					const nextLine = i + 1 < lines.length ? lines[i + 1] : '';
-					const isHeaderRow = nextLine.includes('|-') || nextLine.includes('| -');
-
-					if (isHeaderRow) {
-						result.push('<thead class="bg-[#191919] text-black">');
-						inTable = true;
-					} else {
-						result.push('<tbody class="bg-transparent">');
-						inTable = true;
-					}
-				}
-
-				if (line.replace(/[|:\-\s]/g, '').length === 0) continue;
-
-				const isHeaderRow =
-					i > 0 && lines[i - 1].includes('<thead') && !lines[i - 1].includes('</thead');
-
-				const cells = line
-					.split('|')
-					.filter((cell) => cell.trim() !== '')
-					.map((cell) => cell.trim());
-
-				const cellTag = isHeaderRow ? 'th' : 'td';
-				const cellClass = 'border border-black px-6 py-2 text-black';
-
-				result.push('<tr>');
-				cells.forEach((cell) => {
-					result.push(`<${cellTag} class="${cellClass}">${cell}</${cellTag}>`);
-				});
-				result.push('</tr>');
-
-				if (isHeaderRow && i + 1 < lines.length && !lines[i + 1].includes('|-')) {
-					result.push('</thead><tbody>');
-				}
-			} else if (inTable) {
-				result.push('</tbody></table></div>');
-				inTable = false;
-				result.push(line);
-			} else {
-				result.push(line);
-			}
+	// Separate effect to call the callback when headings change
+	$effect(() => {
+		if (onHeadingsExtracted && extractedHeadings.length >= 0) {
+			onHeadingsExtracted(extractedHeadings);
 		}
-
-		if (inTable) {
-			result.push('</tbody></table></div>');
-		}
-
-		return result.join('\n');
-	}
+	});
 </script>
 
-<div class={`max-w-none text-black ${className}`}>
+<div class={`prose max-w-none ${className}`}>
 	{@html parsedContent}
 </div>

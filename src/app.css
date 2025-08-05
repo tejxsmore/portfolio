@@ -33,6 +33,12 @@ body {
 	box-sizing: inherit;
 }
 
+/* Fix bullet and number marker colors */
+.prose ul > li::marker,
+.prose ol > li::marker {
+	color: black !important;
+}
+
 /* === General Sans Font Faces (OTF) === */
 @font-face {
 	font-family: 'GeneralSans';
