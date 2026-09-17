@@ -4,7 +4,7 @@
 
 <div class="min-h-full w-full">
 	<h1
-		class="m-0 mb-[5%] text-[clamp(17px,1.9vw,27px)] leading-[0.9] font-normal tracking-[0.045em] whitespace-nowrap"
+		class="m-0 mb-[4%] text-[clamp(17px,1.9vw,27px)] leading-[0.9] font-normal tracking-[0.045em] whitespace-nowrap"
 	>
 		TEJAS MORE<span class="animate-blink">_</span>
 	</h1>

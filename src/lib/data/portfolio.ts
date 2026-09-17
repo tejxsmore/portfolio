@@ -5,6 +5,7 @@ export type LinkItem = {
 
 export type Project = {
 	title: string;
+	description: string;
 	stack: string;
 	links: LinkItem[];
 	lines: string[];
@@ -22,13 +23,13 @@ export const menu = ['ABOUT', 'PROJECTS', 'EXPERIENCE', 'CONTACT'];
 export const projects: Project[] = [
 	{
 		title: 'HIREHERO',
+		description: 'FULL-STACK JOB PORTAL',
 		stack: 'SVELTEKIT / AWS / BETTER AUTH',
 		links: [
 			{ label: 'GITHUB', url: 'https://github.com/tejxsmore/hirehero' },
-			{ label: 'LIVE', url: 'https://hirehero.tejasmore.in' },
+			{ label: 'LIVE', url: 'https://hirehero.tejasmore.in' }
 		],
 		lines: [
-			'FULL-STACK JOB PORTAL',
 			'EMPLOYER + CANDIDATE FLOWS',
 			'JOB POSTINGS + APPLICATIONS',
 			'INTERVIEW SCHEDULING',
@@ -40,13 +41,13 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'ELEVATE',
+		description: 'AI VOICE SALES PLATFORM',
 		stack: 'GOLANG / DEEPGRAM / TWILIO',
 		links: [
 			{ label: 'GITHUB', url: 'https://github.com/tejxsmore/elevate' },
 			{ label: 'YOUTUBE', url: 'https://youtube.com' }
 		],
 		lines: [
-			'AI VOICE SALES PLATFORM',
 			'OUTBOUND CALLS',
 			'LEAD MANAGEMENT',
 			'CALL HISTORY + OUTCOMES',
@@ -57,13 +58,13 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'NANOLINK',
+		description: 'FULL-STACK URL SHORTENER',
 		stack: 'RUST / AXUM',
 		links: [
 			{ label: 'GITHUB', url: 'https://github.com/tejxsmore/nanolink' },
-			{ label: 'LIVE', url: 'https://nanolink.tejasmore.in' },
+			{ label: 'LIVE', url: 'https://nanolink.tejasmore.in' }
 		],
 		lines: [
-			'FULL-STACK URL SHORTENER',
 			'CUSTOM SHORT CODES',
 			'AUTHENTICATED USERS',
 			'ANONYMOUS URL SHORTENING',
@@ -74,22 +75,19 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'FLOCAL',
+		description: 'AI SPEECH FLUENCY COACH',
 		stack: 'GOLANG / DEEPGRAM / OPENAI',
 		links: [
 			{ label: 'GITHUB', url: 'https://github.com/tejxsmore/flocal' },
 			{ label: 'YOUTUBE', url: 'https://youtube.com' }
 		],
 		lines: [
-			'AI SPEECH FLUENCY COACH',
 			'SCROLL WHEEL FOR RANDOM TOPIC',
 			'CATEGORY FILTERS',
-			'BUSINESS / GENERAL / EDUCATION',
-			'HEALTH / ENVIRONMENT',
-			'PIN TOPIC + PREP TIME',
 			'60 SECOND TIMED SPEAKING',
 			'AI SCORED SPEECH',
-			'MISTAKES HIGHLIGHTED',
-			'IMPROVEMENT TIPS'
+			'IMPROVEMENT TIPS',
+			'LEADERBOARD'
 		]
 	}
 ];
