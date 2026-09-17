@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import 'tailwindcss';
+
+@theme {
+	--font-display: 'VT323', monospace;
+	--color-green-dark: #001d08;
+	--color-button-icon: #7d877d;
+}
+
+@layer base {
+	html,
+	body {
+		@apply m-0 h-full w-full overflow-hidden bg-black;
+	}
+
+	body {
+		font-family: var(--font-display);
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	button {
+		font: inherit;
+	}
+}
+
+@layer utilities {
+	.scrollbar-hide {
+		scrollbar-width: none;
+	}
+
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+
+	.tv-clip {
+		clip-path: polygon(4.5% 3%, 95.5% 3%, 96% 95%, 93% 98%, 7% 98%, 4% 95%);
+	}
+
+	.glow-menu {
+		background:
+			radial-gradient(
+				ellipse 78% 66% at 39% 30%,
+				rgba(0, 125, 34, 0.26) 0%,
+				rgba(0, 105, 29, 0.21) 24%,
+				rgba(0, 78, 21, 0.14) 43%,
+				rgba(0, 48, 13, 0.075) 61%,
+				rgba(0, 22, 6, 0.025) 75%,
+				transparent 88%
+			),
+			radial-gradient(
+				ellipse 45% 36% at 47% 47%,
+				rgba(0, 255, 70, 0.14) 0%,
+				rgba(0, 220, 55, 0.095) 23%,
+				rgba(0, 165, 38, 0.055) 45%,
+				rgba(0, 90, 20, 0.02) 65%,
+				transparent 82%
+			),
+			linear-gradient(
+				180deg,
+				rgba(0, 30, 8, 0.2) 0%,
+				rgba(0, 18, 5, 0.09) 40%,
+				rgba(0, 5, 1, 0.52) 68%,
+				#000 100%
+			);
+	}
+
+	.glow-about {
+		background:
+			radial-gradient(
+				ellipse 78% 66% at 39% 30%,
+				rgba(0, 120, 33, 0.24) 0%,
+				rgba(0, 100, 27, 0.19) 24%,
+				rgba(0, 73, 20, 0.13) 43%,
+				rgba(0, 44, 12, 0.065) 61%,
+				rgba(0, 20, 5, 0.022) 75%,
+				transparent 88%
+			),
+			radial-gradient(
+				ellipse 45% 36% at 47% 47%,
+				rgba(0, 245, 65, 0.13) 0%,
+				rgba(0, 210, 50, 0.085) 23%,
+				rgba(0, 155, 35, 0.05) 45%,
+				rgba(0, 85, 19, 0.018) 65%,
+				transparent 82%
+			),
+			linear-gradient(
+				180deg,
+				rgba(0, 28, 7, 0.18) 0%,
+				rgba(0, 16, 4, 0.08) 40%,
+				rgba(0, 5, 1, 0.54) 68%,
+				#000 100%
+			);
+	}
+
+	.glow-projects {
+		background:
+			radial-gradient(
+				ellipse 78% 66% at 39% 30%,
+				rgba(0, 132, 36, 0.28) 0%,
+				rgba(0, 108, 30, 0.22) 24%,
+				rgba(0, 80, 22, 0.145) 43%,
+				rgba(0, 49, 13, 0.075) 61%,
+				rgba(0, 22, 6, 0.025) 75%,
+				transparent 88%
+			),
+			radial-gradient(
+				ellipse 45% 36% at 47% 47%,
+				rgba(0, 255, 72, 0.15) 0%,
+				rgba(0, 220, 55, 0.1) 23%,
+				rgba(0, 165, 38, 0.058) 45%,
+				rgba(0, 90, 20, 0.022) 65%,
+				transparent 82%
+			),
+			linear-gradient(
+				180deg,
+				rgba(0, 31, 8, 0.21) 0%,
+				rgba(0, 18, 5, 0.09) 40%,
+				rgba(0, 5, 1, 0.51) 68%,
+				#000 100%
+			);
+	}
+
+	.glow-experience {
+		background:
+			radial-gradient(
+				ellipse 78% 66% at 39% 30%,
+				rgba(0, 123, 34, 0.25) 0%,
+				rgba(0, 103, 28, 0.2) 24%,
+				rgba(0, 76, 21, 0.135) 43%,
+				rgba(0, 46, 12, 0.07) 61%,
+				rgba(0, 21, 6, 0.023) 75%,
+				transparent 88%
+			),
+			radial-gradient(
+				ellipse 45% 36% at 47% 47%,
+				rgba(0, 250, 66, 0.135) 0%,
+				rgba(0, 215, 51, 0.09) 23%,
+				rgba(0, 160, 36, 0.052) 45%,
+				rgba(0, 88, 20, 0.02) 65%,
+				transparent 82%
+			),
+			linear-gradient(
+				180deg,
+				rgba(0, 29, 8, 0.19) 0%,
+				rgba(0, 17, 4, 0.08) 40%,
+				rgba(0, 5, 1, 0.53) 68%,
+				#000 100%
+			);
+	}
+
+	.glow-contact {
+		background:
+			radial-gradient(
+				ellipse 78% 66% at 39% 30%,
+				rgba(0, 128, 35, 0.26) 0%,
+				rgba(0, 106, 29, 0.21) 24%,
+				rgba(0, 78, 21, 0.14) 43%,
+				rgba(0, 47, 13, 0.073) 61%,
+				rgba(0, 22, 6, 0.024) 75%,
+				transparent 88%
+			),
+			radial-gradient(
+				ellipse 45% 36% at 47% 47%,
+				rgba(0, 255, 75, 0.145) 0%,
+				rgba(0, 220, 55, 0.095) 23%,
+				rgba(0, 165, 38, 0.055) 45%,
+				rgba(0, 90, 20, 0.02) 65%,
+				transparent 82%
+			),
+			linear-gradient(
+				180deg,
+				rgba(0, 30, 8, 0.2) 0%,
+				rgba(0, 18, 5, 0.08) 40%,
+				rgba(0, 5, 1, 0.52) 68%,
+				#000 100%
+			);
+	}
+
+	@media (max-width: 700px) {
+		.glow-menu,
+		.glow-about,
+		.glow-projects,
+		.glow-experience,
+		.glow-contact {
+			background:
+				radial-gradient(
+					ellipse 105% 62% at 40% 30%,
+					rgba(0, 115, 31, 0.2) 0%,
+					rgba(0, 80, 22, 0.12) 38%,
+					rgba(0, 35, 9, 0.045) 62%,
+					transparent 84%
+				),
+				radial-gradient(
+					ellipse 68% 40% at 50% 47%,
+					rgba(0, 255, 65, 0.11) 0%,
+					rgba(0, 160, 35, 0.05) 45%,
+					transparent 78%
+				),
+				linear-gradient(180deg, rgba(0, 20, 5, 0.15) 0%, rgba(0, 0, 0, 0.72) 72%, #000 100%);
+		}
+	}
+}
+
+@layer components {
+	.tv-controls {
+		@apply fixed left-1/2 z-10 flex -translate-x-1/2 items-center justify-center gap-[clamp(5px,0.55vw,9px)] rounded-[9px] p-1.5;
+		bottom: clamp(10px, 2.4vh, 25px);
+		background: linear-gradient(180deg, #151815 0%, #0c0e0c 48%, #060706 100%);
+		border: 1px solid #242924;
+		box-shadow:
+			0 2px 0 #000,
+			0 7px 20px rgba(0, 0, 0, 0.9),
+			inset 0 1px 0 rgba(255, 255, 255, 0.05),
+			inset 0 -2px 4px rgba(0, 0, 0, 0.82);
+	}
+
+	.tv-btn {
+		@apply relative flex flex-none cursor-pointer items-center justify-center border border-[#292e29] text-button-icon transition-[transform,box-shadow,filter] duration-75 select-none;
+		background: linear-gradient(145deg, #202420 0%, #141714 35%, #080a08 100%);
+		box-shadow:
+			0 3px 0 #020302,
+			0 5px 8px rgba(0, 0, 0, 0.9),
+			inset 0 1px 1px rgba(255, 255, 255, 0.075),
+			inset 0 -2px 3px rgba(0, 0, 0, 0.82);
+	}
+
+	.tv-btn::before {
+		content: '';
+		@apply pointer-events-none absolute inset-0.5 rounded-[inherit] border border-white/4;
+	}
+
+	.tv-btn:hover {
+		filter: brightness(1.12);
+		color: #929c92;
+	}
+
+	.tv-btn:active {
+		@apply translate-y-0.5;
+		box-shadow:
+			0 1px 0 #000,
+			0 2px 4px rgba(0, 0, 0, 0.8),
+			inset 0 2px 4px rgba(0, 0, 0, 0.75);
+	}
+
+	.tv-btn:focus-visible {
+		outline: 1px solid rgba(0, 255, 70, 0.65);
+		outline-offset: 3px;
+	}
+}
+
+@keyframes blink {
+	0%,
+	48% {
+		opacity: 1;
+	}
+
+	49%,
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes flicker {
+	0% {
+		opacity: 0.985;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.animate-blink {
+	animation: blink 0.8s steps(1) infinite;
+}
+
+.animate-flicker {
+	animation: flicker 0.14s infinite alternate;
+}
+
+@media (max-height: 650px) and (max-width: 700px) {
+	.tv-controls {
+		transform: translateX(-50%) scale(0.88);
+		transform-origin: bottom center;
+	}
+}
